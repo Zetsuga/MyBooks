@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root{
+    --colorPrincipal:#264653;
+    --colorPrincipalHover:#2a9d8f;
+    --colorSecundario:#e9c46a;
+    --colorSecundarioHover:#e76f51;
+    --colorTerciario:#f4a261;
+    --fuentePrincipal: 'Lato', sans-serif;
+    --fuenteSecundaria:'Roboto', sans-serif;
+    --blanco:white;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}

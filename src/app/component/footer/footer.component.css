@@ -1,0 +1,35 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--colorPrincipal);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.footer_registro_titulo{
+    color: var(--colorSecundario);
+    font-family: var(--fuentePrincipal);
+    font-weight: 600;
+    font-size: 0.8em;
+    padding-left: 60px;
+}
+
+.footer_rrss{
+    display: flex;
+    justify-content: space-around;
+    padding-right: 60px;
+}
+
+.footer_rsss_boton{
+    color:var(--colorSecundario);
+    text-decoration: none;
+    padding-right: 20px;
+    font-family: var(--fuentePrincipal);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.footer_rsss_boton:hover{
+    color:var(--colorSecundarioHover);
+}

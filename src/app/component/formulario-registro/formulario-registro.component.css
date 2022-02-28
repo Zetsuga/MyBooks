@@ -1,0 +1,27 @@
+.contenedor_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.contenedor_form_campo{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    box-shadow: 2px 4px 6px var(--colorPrincipal);
+    width: 40vh;
+    font-size: 1em;
+}
+
+.contenedor_form_boton{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    background-color: var(--colorPrincipal);
+    color:var(--blanco);
+    font-size: 1.2em;
+    border: 2px solid var(--colorPrincipalHover);
+    box-shadow: 2px 4px 6px var(--colorPrincipalHover);
+}
