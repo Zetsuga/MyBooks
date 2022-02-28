@@ -1,10 +1,12 @@
 .header{
     display: flex;
+    position: fixed;
     justify-content: space-between;
     flex-wrap: wrap;
     background-color: var(--colorPrincipal);
     padding-top: 15px;
     padding-bottom: 15px;
+    width: 100vw;
 }
 
 .header_logo_titulo{

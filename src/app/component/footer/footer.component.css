@@ -5,6 +5,7 @@
     background-color: var(--colorPrincipal);
     padding-top: 15px;
     padding-bottom: 15px;
+    height: 50px;
 }
 
 .footer_registro_titulo{
