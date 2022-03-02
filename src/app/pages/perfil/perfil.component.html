@@ -1,0 +1,58 @@
+<div class="principal">
+    <div class="contenedor">
+        <div class = "contenedor_datos">
+            <div class="contenedor_imagen">
+                <img class="imagen__perfil" src="../../../assets/img/perfil.png">
+            </div>
+            <div class="nombre_completo">
+                <h3 class="nombre_completo_texto"><fa-icon [icon]="faCoffee"></fa-icon>{{usuario.nombre}} {{usuario.apellido}}</h3>
+            </div>
+            
+            <div class="contenedor_nombre">
+                
+                <div class="contenedor_texto">
+                    <h4 class="contenedor_nombre_texto">Nombre</h4>
+                </div>
+                <div class="contenedor_caja">
+                    <h4 class="contenedor_input">{{usuario.nombre}}</h4>
+                </div>
+                
+            </div>
+            <div class="contenedor_apellido">
+                <div class="contenedor_texto">
+                    <h4 class="contenedor_texto">Apellido</h4>
+                </div>
+                <div class="contenedor_caja">
+                    <h4 class="contenedor_input">{{usuario.apellido}}</h4>
+                </div>
+            </div>
+            <div class="contenedor_correo">
+                <div class="contenedor_texto">
+                    <h4 class="contenedor_texto">Correo</h4>
+                </div>
+                <div class="contenedor_caja">
+                    <h4 class="contenedor_input">{{usuario.correo}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="barra"></div>
+        <div class = "contenedor_datos">
+            <div class="contenedor_datos_titulo">
+                <h3 class="contenedor_datos_titulo_texto">
+                    Editar datos
+                </h3>
+                <hr>
+            </div>
+            <div class="contenedor_datos_input">
+                <input type="text" #nombre>
+                <input type="text" #apellido>
+                <input type="text" #correo>
+                <input type="text" #url>
+                <input type="text" #password>
+                <button class="boton_modificar" (click)="recogerDatos(nombre.value,apellido.value,
+                correo.value,url.value,password.value)">Modificar</button>
+            </div>
+            <div class={{toastClase}}>{{mensaje}}</div>
+        </div>
+    </div>
+</div>

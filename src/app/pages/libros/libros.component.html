@@ -1,0 +1,54 @@
+<div class="contenido_formulario">
+    <form class="contenedor_form">
+        <input class="contenedor_form_campo" #idLibro type="number" placeholder="Referencia del libro">
+        <input class="contenedor_form_campo" #idUsuario type="number" placeholder="Usuario ID">
+        <input class="contenedor_form_campo" #titulo type="text" placeholder="Título">
+        <input class="contenedor_form_campo" #tipoLibro type="text" placeholder="Tipo de libro">
+        <input class="contenedor_form_campo" #autor type="text" placeholder="Autor">
+        <input class="contenedor_form_campo" #photo type="text" placeholder="photo">
+        <input class="contenedor_form_campo" #precio type="number" placeholder="Precio">
+
+        <button class="contenedor_form_boton" (click)="guardarLibro(idLibro.value,idUsuario.value,
+        titulo.value,tipoLibro.value,autor.value,precio.value,photo.value)" type="reset">GUARDAR</button>
+    </form>
+</div>
+
+
+
+<div class="contenido">
+    <div *ngIf="arrayLibros.length === 0; else falso" class="contenido_centrado">
+        <p class="errorLibros">No hay ningún libro que mostrar</p>
+    </div>
+    <ng-template #falso>
+        <ng-container *ngFor="let element of arrayLibros; let  par = even">
+                <div class="tarjeta">
+                    <div class="tarjeta_imagen">
+                        <img src="../../../assets/img/{{element.photo}}" alt="{{element.titulo}}" class="tarjeta_imagen_img">
+                    </div>
+                    <div class="tarjeta_datos">
+                        <div class="tarjeta_datos_tipo">
+                            <p class="tarjeta_titulo_tipo_texto">{{element.tipoLibro}}</p>
+                        </div>
+                        <div class="tarjeta_datos_hr">
+                            <hr>
+                        </div>
+                        <div class="tarjeta_datos_titulo">
+                            <p class="tarjeta_datos_titulo_texto">{{element.titulo}}</p>
+                        </div>
+                        <div class="tarjeta_datos_autorRef">
+                            <p class="tarjeta_datos_autorRef_texto">Autor: {{element.autor}}</p>
+                            <p class="tarjeta_datos_autorRef_texto">{{element.id_libro | ref}}</p>
+                        </div>
+                        <div class="tarjeta_datos_precio">
+                            <p class="tarjeta_datos_precio_texto">{{element.precio}}€</p>
+                        </div>
+                        <div class="tarjeta_datos_boton">
+                            <button (click)="comprar()" [ngClass]="par?'tarjeta_datos_boton_btn':'tarjeta_datos_boton_btn--par'">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>
+        </ng-container>
+    </ng-template>
+    
+</div>
+

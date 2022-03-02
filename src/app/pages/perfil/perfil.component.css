@@ -1,0 +1,131 @@
+.principal{
+    height: calc(100vh - 50px);
+    background-repeat: no-repeat;
+    background: url(../../../assets/img/banner.jpg) no-repeat center center fixed;
+    background-size: 100% 100%;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.534);
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5%;
+    max-width: 1000px;
+    padding: 30px 70px;
+}
+
+.contenedor_datos{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 100px;
+}
+
+.barra{
+    border: 1px solid rgba(0, 0, 0, 0.788);
+    width: 1px;
+    height: 60vh;
+}
+
+.contenedor_imagen{
+    width: 200px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+}
+
+.imagen__perfil{
+    max-width: 200px;
+    border-radius: 100%;
+}
+
+.nombre_completo{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.nombre_completo_texto{
+    font-size: 1.8em;
+}
+
+.contenedor_nombre, .contenedor_apellido, .contenedor_correo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contenedor_caja{
+    border: 2px solid rgba(255, 255, 255, 0.26);
+    width: 100px;
+    text-align: center;
+}
+
+.contenedor_datos_input{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.contenedor_datos_titulo{
+    margin-bottom: 50px;
+    font-size: 2em;
+}
+
+input{
+    background-color: rgba(0, 0, 0, 0.103);
+    border-color: rgba(255, 255, 255, 0.26);
+    height: 40px;
+    color:white;
+    text-align: center;
+    font-weight: 600;
+}
+
+.boton_modificar{
+    background-color: var(--colorPrincipalHover);
+    color: white;
+    border:none;
+    width: 150px;
+    height: 40px;
+    font-size: 1.3em;
+    font-family: var(--fuenteSecundaria);
+    margin: 0 auto;
+}
+.boton_modificar:hover{
+    background-color: var(--colorPrincipalHover);
+    color: white;
+    border:none;
+    width: 150px;
+    height: 40px;
+    font-size: 1.3em;
+    font-family: var(--fuenteSecundaria);
+    margin: 0 auto;
+}
+
+.toast--oculto{
+    visibility: none;
+}
+
+.toast--error{
+    margin-top: 10px;
+    visibility: initial;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.toast--ok{
+    margin-top: 10px;
+    visibility: initial;
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}

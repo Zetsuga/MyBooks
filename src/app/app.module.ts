@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,15 +9,19 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormularioRegistroComponent } from './component/formulario-registro/formulario-registro.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { LibrosComponent } from './pages/libros/libros.component';
+import { RefLibroPipe } from './pipes/refLibro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,  
-    HeaderComponent, FooterComponent, HomeComponent, FormularioRegistroComponent, RegistroComponent
+    HeaderComponent, FooterComponent, HomeComponent, FormularioRegistroComponent, RegistroComponent, PerfilComponent, LibrosComponent, RefLibroPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
