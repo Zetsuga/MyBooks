@@ -1,8 +1,5 @@
 .principal{
     height: calc(100vh - 50px);
-    background-repeat: no-repeat;
-    background: url(../../../assets/img/banner.jpg) no-repeat center center fixed;
-    background-size: 100% 100%;
     padding: 150px 0;
     display: flex;
     justify-content: center;
@@ -88,7 +85,7 @@ input{
 }
 
 .boton_modificar{
-    background-color: var(--colorPrincipalHover);
+    background-color: var(--colorPrincipal);
     color: white;
     border:none;
     width: 150px;
@@ -96,16 +93,10 @@ input{
     font-size: 1.3em;
     font-family: var(--fuenteSecundaria);
     margin: 0 auto;
+    border-radius: 10%;
 }
 .boton_modificar:hover{
     background-color: var(--colorPrincipalHover);
-    color: white;
-    border:none;
-    width: 150px;
-    height: 40px;
-    font-size: 1.3em;
-    font-family: var(--fuenteSecundaria);
-    margin: 0 auto;
 }
 
 .toast--oculto{

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 
 import{faCoffee} from '@fortawesome/free-solid-svg-icons';
+import { UsuarioService } from 'src/app/shared/usuario.service';
+
 
 @Component({
   selector: 'app-perfil',
@@ -10,22 +12,22 @@ import{faCoffee} from '@fortawesome/free-solid-svg-icons';
 })
 export class PerfilComponent implements OnInit {
 
-  public usuario: Usuario;
+  public user: Usuario;
   public mensaje: string;
   public toastClase: string;
-
+  public usuario : Usuario;
   public faCoffee;
 
-  constructor() { 
-    this.usuario = new Usuario(1,"Jose","Ors","1@1.com","www.app.com","1235");
+  constructor(public usuarioService:UsuarioService) { 
     this.faCoffee = faCoffee;
+    this.usuario = usuarioService.usuario;
   }
 
   ngOnInit(): void {
   }
 
-  public recogerDatos(nombre:string,apellido:string,correo:string,url:string,password:string):void{
-      if(nombre =="" && apellido =="" && correo =="" && url =="" && password ==""){
+  public recogerDatos(nombre:string,apellidos:string,correo:string,url:string,password:string):void{
+      if(nombre =="" && apellidos =="" && correo =="" && url =="" && password ==""){
         this.mensaje="No se han detectado cambios";
         this.toastClase = "toast--error";
         setTimeout(()=>{
@@ -33,23 +35,34 @@ export class PerfilComponent implements OnInit {
           this.mensaje=""
         }, 3000);
       }else{
-        if(nombre =="")nombre = this.usuario.nombre;
-        if(apellido =="")apellido = this.usuario.apellido;
-        if(correo =="")correo = this.usuario.correo;
-        if(url =="")url = this.usuario.url;
-        if(password =="")password = this.usuario.password;
+        nombre = (nombre =="")?null:nombre;
+        apellidos = (apellidos =="")?null:apellidos;
+        correo = (correo =="")?null:correo;
+        url = (url =="")?null:url;
+        password = (password =="")?null:password;
 
-        this.usuario.nombre = nombre;
-        this.usuario.apellido = apellido;
-        this.usuario.correo = correo;
-        this.usuario.url = url;
-        this.usuario.password = password;
-        this.mensaje="Usuario actualizado";
-        this.toastClase = "toast--ok";
-        setTimeout(()=>{
-          this.toastClase= "toast--oculto"
-          this.mensaje=""
-        }, 3000);
+        this.user = new Usuario(nombre,apellidos,correo,url,password);
+        this.user.id_usuario = this.usuarioService.usuario.id_usuario;
+        
+        this.usuarioService.edit(this.user).subscribe((datos:any)=>{
+          console.log(this.usuario)
+            if(datos.error == false){
+              this.mensaje="Usuario actualizado";
+              this.toastClase = "toast--ok";
+              setTimeout(()=>{
+                this.toastClase= "toast--oculto"
+                this.mensaje=""
+              }, 3000);
+            }
+            for(let atributo in this.user){
+              if(this.user[atributo] !=null){
+                this.usuario[atributo] = this.user[atributo];
+              }
+            }
+
+        });
+
+        
       }
       
   }

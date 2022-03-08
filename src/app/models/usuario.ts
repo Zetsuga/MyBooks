@@ -2,16 +2,16 @@ export class Usuario {
     
     public id_usuario:number;
     public nombre:string;
-    public apellido:string;
+    public apellidos:string;
     public correo:string;
     public url:string;
     public password:string;
 
-    constructor(id_usuario:number,nombre:string,apellido:string,
+    constructor(nombre:string,apellidos:string,
         correo:string,url:string,password:string){
-            this.id_usuario = id_usuario;
+            this.id_usuario = 0;
             this.nombre = nombre;
-            this.apellido = apellido;
+            this.apellidos = apellidos;
             this.correo = correo;
             this.url = url;
             this.password = password;

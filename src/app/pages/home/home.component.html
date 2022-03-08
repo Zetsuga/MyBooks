@@ -4,7 +4,7 @@
             MUY PRONTO NUESTRA LA BILIOTECA<br> QUE SIEMPRE HAS QUERIDO TENER CERCA
         </h2>
     </div>
-    <div class="banner_boton">
-        <a routerLink="/registro" class="banner_boton_registro">REGISTRATE</a>
+    <div *ngIf="getLogueado()==false" class="banner_boton">
+        <a  routerLink="/registro" class="banner_boton_registro">REGISTRATE</a>
     </div>
 </div>

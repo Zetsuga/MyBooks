@@ -1,0 +1,38 @@
+.contenedor{
+    padding-top: 100px;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.contenedor_datos_input{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+input{
+    background-color: rgba(0, 0, 0, 0.103);
+    border-color: rgba(255, 255, 255, 0.26);
+    height: 40px;
+    color:white;
+    text-align: center;
+    font-weight: 600;
+}
+
+.boton_loguear{
+    background-color: var(--colorPrincipal);
+    color: white;
+    border:none;
+    width: 150px;
+    height: 40px;
+    font-size: 1.3em;
+    font-family: var(--fuenteSecundaria);
+    margin: 0 auto;
+    border-radius: 10%;
+}
+.boton_loguear:hover{
+    background-color: var(--colorPrincipalHover);
+}
+

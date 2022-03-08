@@ -1,9 +1,58 @@
-<form class="contenedor_form">
-    <input class="contenedor_form_campo" id="nombre" type="text" placeholder="Introduce tu Nombre completo">
-    <input class="contenedor_form_campo" id="email" type="email" placeholder="Email">
-    <input class="contenedor_form_campo" id="destino" type="text" placeholder="Url">
-    <input class="contenedor_form_campo" id="contrasenia" type="password" placeholder="Contraseña">
-    <input class="contenedor_form_campo" id="contrasenia2" type="password" placeholder="Contraseña">
-    <input class="contenedor_form_boton" type="button" value="ENVIAR">
+<form #registroForm="ngForm" class="contenedor_form" (ngSubmit)="onSubmit(registroForm)">
+    
+    <div class="form-group">
+        <input class="contenedor_form_campo" name="nombre" [(ngModel)]="usuario.nombre" #nombre="ngModel" type="text" placeholder="Nombre" 
+        [ngClass]="{'is-invalid':nombre.invalid && (nombre.dirty || nombre.touched)}" required>
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <p *ngIf="nombre.errors.required" class="advertencia">El nombre es obligatorio</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="contenedor_form_campo" name="apellidos" [(ngModel)]="usuario.apellidos"  #apellidos="ngModel" type="text" placeholder="Apellidos" 
+        [ngClass]="{'is-invalid':apellidos.invalid && (apellidos.dirty || apellidos.touched)}" required>
+        <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+            <p *ngIf="apellidos.errors.required" class="advertencia">Los apellidos son obligatorios</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="contenedor_form_campo" type="email" name="correo" [(ngModel)]="usuario.correo" #correo="ngModel"  placeholder="Correo"
+            [ngClass]="{'is-invalid':correo.invalid && (correo.dirty || correo.touched)}" email required>
+            <div *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                <p *ngIf="correo.errors.required" class="advertencia">El correo es obligatorio</p>
+                <p *ngIf="correo.errors.email" class="advertencia">El correo no es válido</p>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <input class="contenedor_form_campo" name="url" [(ngModel)]="usuario.url"  #url="ngModel" type="text" placeholder="URL de la fotografía" 
+        [ngClass]="{'is-invalid':url.invalid && (url.dirty || url.touched)}" required>
+        <div *ngIf="url.invalid && (url.dirty || url.touched)">
+            <p *ngIf="url.errors.required" class="advertencia">La url es obligatoria</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="contenedor_form_campo" name="password" [(ngModel)]="usuario.password"  #password="ngModel" type="text" placeholder="Contraseña" 
+        [ngClass]="{'is-invalid':password.invalid && (password.dirty || password.touched)}" minlength="5" required>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <p *ngIf="password.errors.required" class="advertencia">La contraseña es obligatoria</p>
+            <p *ngIf="password.errors.minlength" class="advertencia">Minimo 5 caracteres</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="contenedor_form_campo" name="password2" [(ngModel)]="registro.password2"  #password2="ngModel" type="text" placeholder="Repite la Contraseña" 
+        [ngClass]="{'is-invalid':password2.invalid && (password2.dirty || password2.touched)}" minlength="5" required>
+        <div *ngIf="password2.invalid && (password2.dirty || password2.touched)">
+            <p *ngIf="password2.errors.required" class="advertencia">La contraseña es obligatoria</p>
+            <p *ngIf="password2.errors.minlength" class="advertencia">Minimo 5 caracteres</p>
+        </div>
+    </div>
+   <button 
+        class="contenedor_form_boton" 
+        type="submit">ENVIAR
+    </button>
     
 </form>

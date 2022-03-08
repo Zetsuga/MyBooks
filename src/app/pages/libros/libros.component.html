@@ -1,54 +1,160 @@
-<div class="contenido_formulario">
-    <form class="contenedor_form">
-        <input class="contenedor_form_campo" #idLibro type="number" placeholder="Referencia del libro">
-        <input class="contenedor_form_campo" #idUsuario type="number" placeholder="Usuario ID">
-        <input class="contenedor_form_campo" #titulo type="text" placeholder="Título">
-        <input class="contenedor_form_campo" #tipoLibro type="text" placeholder="Tipo de libro">
-        <input class="contenedor_form_campo" #autor type="text" placeholder="Autor">
-        <input class="contenedor_form_campo" #photo type="text" placeholder="photo">
-        <input class="contenedor_form_campo" #precio type="number" placeholder="Precio">
-
-        <button class="contenedor_form_boton" (click)="guardarLibro(idLibro.value,idUsuario.value,
-        titulo.value,tipoLibro.value,autor.value,precio.value,photo.value)" type="reset">GUARDAR</button>
-    </form>
-</div>
-
-
-
-<div class="contenido">
-    <div *ngIf="arrayLibros.length === 0; else falso" class="contenido_centrado">
-        <p class="errorLibros">No hay ningún libro que mostrar</p>
-    </div>
-    <ng-template #falso>
-        <ng-container *ngFor="let element of arrayLibros; let  par = even">
-                <div class="tarjeta">
-                    <div class="tarjeta_imagen">
-                        <img src="../../../assets/img/{{element.photo}}" alt="{{element.titulo}}" class="tarjeta_imagen_img">
-                    </div>
-                    <div class="tarjeta_datos">
-                        <div class="tarjeta_datos_tipo">
-                            <p class="tarjeta_titulo_tipo_texto">{{element.tipoLibro}}</p>
-                        </div>
-                        <div class="tarjeta_datos_hr">
-                            <hr>
-                        </div>
-                        <div class="tarjeta_datos_titulo">
-                            <p class="tarjeta_datos_titulo_texto">{{element.titulo}}</p>
-                        </div>
-                        <div class="tarjeta_datos_autorRef">
-                            <p class="tarjeta_datos_autorRef_texto">Autor: {{element.autor}}</p>
-                            <p class="tarjeta_datos_autorRef_texto">{{element.id_libro | ref}}</p>
-                        </div>
-                        <div class="tarjeta_datos_precio">
-                            <p class="tarjeta_datos_precio_texto">{{element.precio}}€</p>
-                        </div>
-                        <div class="tarjeta_datos_boton">
-                            <button (click)="comprar()" [ngClass]="par?'tarjeta_datos_boton_btn':'tarjeta_datos_boton_btn--par'">COMPRAR</button>
-                        </div>
+<div class="principal">
+    <div class="contenedor_formularios">
+        <div class="contenido_formulario">
+            <p class="contenido_formulario_titulo">
+                Añadir libro
+            </p>
+            <form class="contenedor_form" #guardarForm="ngForm" (ngSubmit)="guardarLibro(guardarForm)">
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="titulo" [(ngModel)]="libro.titulo" #titulo="ngModel" type="text" placeholder="Título" 
+                    [ngClass]="{'is-invalid':titulo.invalid && (titulo.dirty || titulo.touched)}" required>
+                    <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+                        <p *ngIf="titulo.errors.required" class="advertencia">El Título es obligatorio</p>
                     </div>
                 </div>
-        </ng-container>
-    </ng-template>
-    
+                <select class="contenedor_form_campo" name="tipo" [(ngModel)]="libro.tipo" #tipo="ngModel">
+                    <option value="Tapa Blanda">Tapa Blanda</option>
+                    <option value="Tapa Dura">Tapa Dura</option>
+                </select>
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="autor" [(ngModel)]="libro.autor" #autor="ngModel" type="text" placeholder="Autor" 
+                    [ngClass]="{'is-invalid':autor.invalid && (autor.dirty || autor.touched)}" required>
+                    <div *ngIf="autor.invalid && (autor.dirty || autor.touched)">
+                        <p *ngIf="autor.errors.required" class="advertencia">El Autor es obligatorio</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="foto" [(ngModel)]="libro.foto" #foto="ngModel" type="text" placeholder="URL Foto" 
+                    [ngClass]="{'is-invalid':foto.invalid && (foto.dirty || foto.touched)}" required>
+                    <div *ngIf="foto.invalid && (foto.dirty || foto.touched)">
+                        <p *ngIf="foto.errors.required" class="advertencia">La URL es obligatoria</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="precio" [(ngModel)]="libro.precio" #precio="ngModel" type="text" placeholder="Precio" 
+                    [ngClass]="{'is-invalid':precio.invalid && (precio.dirty || precio.touched)}" required>
+                    <div *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                        <p *ngIf="precio.errors.required" class="advertencia">El precio es obligatoria</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="contenedor_form_boton" [disabled]="!guardarForm.valid">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="contenido_formulario">
+            <p class="contenido_formulario_titulo">
+                Modificar libro
+            </p>
+            <form class="contenedor_form" #modificarForm="ngForm" (ngSubmit)="modificarLibro(modificarForm)">
+                <div class="form-group">
+                    <select class="contenedor_form_campo" name="idLibro1" [(ngModel)]="libro.id_libro" #idLibro1="ngModel">
+                        <option *ngFor="let lib of libros" value="{{lib.id_libro}}">{{lib.titulo}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="titulo1" [(ngModel)]="libro.titulo" #titulo1="ngModel" type="text" placeholder="Título" 
+                    [ngClass]="{'is-invalid':titulo1.invalid && (titulo1.dirty || titulo1.touched)}" required>
+                    <div *ngIf="titulo1.invalid && (titulo1.dirty || titulo1.touched)">
+                        <p *ngIf="titulo1.errors.required" class="advertencia">El Título es obligatorio</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                <select class="contenedor_form_campo" name="tipo1" [(ngModel)]="libro.tipo" #tipo1="ngModel">
+                    <option value="Tapa Blanda">Tapa Blanda</option>
+                    <option value="Tapa Dura">Tapa Dura</option>
+                </select>
+                </div>
+
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="autor1" [(ngModel)]="libro.autor" #autor1="ngModel" type="text" placeholder="Autor" 
+                    [ngClass]="{'is-invalid':autor1.invalid && (autor1.dirty || autor1.touched)}" required>
+                    <div *ngIf="autor1.invalid && (autor1.dirty || autor1.touched)">
+                        <p *ngIf="autor1.errors.required" class="advertencia">El Autor es obligatorio</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="foto1" [(ngModel)]="libro.foto" #foto1="ngModel" type="text" placeholder="URL Foto" 
+                    [ngClass]="{'is-invalid':foto1.invalid && (foto1.dirty || foto1.touched)}" required>
+                    <div *ngIf="foto1.invalid && (foto1.dirty || foto1.touched)">
+                        <p *ngIf="foto1.errors.required" class="advertencia">La URL es obligatoria</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input class="contenedor_form_campo" name="precio1" [(ngModel)]="libro.precio" #precio1="ngModel" type="text" placeholder="Precio" 
+                    [ngClass]="{'is-invalid':precio1.invalid && (precio1.dirty || precio1.touched)}" required>
+                    <div *ngIf="precio1.invalid && (precio1.dirty || precio1.touched)">
+                        <p *ngIf="precio1.errors.required" class="advertencia">La URL es obligatoria</p>
+                    </div>
+                </div>>
+
+                <div class="form-group">
+                    <button class="contenedor_form_boton" [disabled]="!modificarForm.valid">MODIFICAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="contenedor_buscador">
+        <div class="buscador">
+            <input type="text" 
+                class="buscador_caja"
+                (keyup)="buscarLibro(buscar.value)"
+                #buscar>
+                
+                <div class="buscador_caja_boton">
+                    <a on-click="buscarLibro(buscar.value)"><fa-icon [icon]="faSearch">
+
+                    </fa-icon></a>
+                </div>
+        </div>
+    </div>
+    <div class="contenido">
+        <div *ngIf="[libros].length== 0; else falso" class="contenido_centrado">
+            <p class="errorLibros">No hay ningún libro que mostrar</p>
+        </div>
+        <ng-template #falso>
+            
+            <div class="contenido_tarjeta">
+                <ng-container *ngFor="let element of libros; let  par = even">
+                    <div class="tarjeta">
+                        <div class="tarjeta_imagen">
+                            <button 
+                                type="reset" 
+                                class="tarjeta_imagen_boton" 
+                                (click)="borrarLibro(element.id_libro)">X</button>
+                            <img src="../../../assets/img/{{element.foto}}" alt="{{element.titulo}}" class="tarjeta_imagen_img">
+                        </div>
+                        <div class="tarjeta_datos">
+                            <div class="tarjeta_datos_tipo">
+                                <p class="tarjeta_titulo_tipo_texto">{{element.tipo}}</p>
+                            </div>
+                            <div class="tarjeta_datos_hr">
+                                <hr>
+                            </div>
+                            <div class="tarjeta_datos_titulo">
+                                <p class="tarjeta_datos_titulo_texto">{{element.titulo}}</p>
+                            </div>
+                            <div class="tarjeta_datos_autorRef">
+                                <p class="tarjeta_datos_autorRef_texto">Autor: {{element.autor}}</p>
+                                <p class="tarjeta_datos_autorRef_texto">{{element.id_libro | ref}}</p>
+                            </div>
+                            <div class="tarjeta_datos_precio">
+                                <p class="tarjeta_datos_precio_texto">{{element.precio}}€</p>
+                            </div>
+                            <div class="tarjeta_datos_boton">
+                                <button (click)="comprar()" [ngClass]="par?'tarjeta_datos_boton_btn':'tarjeta_datos_boton_btn--par'">COMPRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-template>
+    </div>
 </div>
+
 

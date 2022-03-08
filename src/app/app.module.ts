@@ -12,16 +12,35 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { LibrosComponent } from './pages/libros/libros.component';
 import { RefLibroPipe } from './pipes/refLibro.pipe';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,  
-    HeaderComponent, FooterComponent, HomeComponent, FormularioRegistroComponent, RegistroComponent, PerfilComponent, LibrosComponent, RefLibroPipe
+    HeaderComponent,
+    FooterComponent, 
+    HomeComponent, 
+    FormularioRegistroComponent, 
+    RegistroComponent, 
+    PerfilComponent, 
+    LibrosComponent, 
+    RefLibroPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({timeOut: 3000})
   ],
   providers: [],
   bootstrap: [AppComponent]

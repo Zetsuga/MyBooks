@@ -25,3 +25,29 @@
     border: 2px solid var(--colorPrincipalHover);
     box-shadow: 2px 4px 6px var(--colorPrincipalHover);
 }
+
+.contenedor_form_boton:hover{
+    background-color: var(--colorPrincipalHover);
+}
+
+.toast--oculto{
+    visibility: none;
+}
+
+.toast--error{
+    margin-top: 10px;
+    visibility: initial;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.toast--ok{
+    margin-top: 10px;
+    visibility: initial;
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
