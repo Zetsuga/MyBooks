@@ -1,0 +1,114 @@
+.tarjeta{
+    width: 250px;
+    box-shadow: 5px 5px 15px var(--colorPrincipalHover);
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+
+.tarjeta_imagen{
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+.tarjeta_imagen_boton{
+    position: absolute;
+    right : 10px;
+    top : 10px;
+    border-radius: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: var(--colorPrincipal);
+    color:white;
+    font-weight: 600;
+}
+
+.tarjeta_imagen_boton:hover{
+    border-radius: 100%;
+    padding: 10px 15px;
+    background-color: var(--colorPrincipalHover);
+    font-size: 0.8em;
+}
+
+
+
+.tarjeta_imagen_img{
+    max-width: 250px;
+    border-radius: 10px 10px 0 0;
+}
+.tarjeta_datos{
+    padding: 0 10px 10px 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.tarjeta_datos,.tarjeta_datos_precio,.tarjeta_datos_boton{
+    margin-top: 15px;
+}
+
+.tarjeta_datos_tipo{
+    font-size: 0.8em;
+    padding-left: 10px;
+}
+
+.tarjeta_datos_hr{
+    border-top: 1px dashed var(--colorSecundario);
+}
+
+.tarjeta_datos_titulo,.tarjeta_datos_autorRef{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.tarjeta_datos_titulo_texto{
+    font-size: 1.3em;
+    color: var(--colorPrincipal);
+    font-weight: 600;
+}
+
+.tarjeta_datos_autorRef_texto{
+    padding-bottom: 5px;
+}
+
+.tarjeta_datos_precio{
+    font-weight: 600;
+    font-size: 1.7em;
+    color: var(--colorPrincipal);
+    text-align: center;
+}
+
+.tarjeta_datos_boton_btn{
+    width: 100%;
+    background-color: var(--colorPrincipal);
+    color: var(--colorSecundario);
+    height: 40px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+
+.tarjeta_datos_boton_btn:hover{
+    background-color: var(--colorSecundario);
+    color: black;
+}
+
+.tarjeta_datos_boton_btn--par{
+    width: 100%;
+    background-color: var(--colorPrincipalHover);
+    color: var(--colorSecundario);
+    height: 40px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+
+.tarjeta_datos_boton_btn--par:hover{
+    background-color: var(--colorSecundario);
+    color: black;
+}

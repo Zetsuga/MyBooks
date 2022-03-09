@@ -1,0 +1,30 @@
+<div class="tarjeta">
+    <div class="tarjeta_imagen">
+        <button 
+            type="reset" 
+            class="tarjeta_imagen_boton" 
+            (click)="borrar(librosPadre.id_libro)">X</button>
+        <img src="../../../assets/img/{{librosPadre.foto}}" alt="{{librosPadre.titulo}}" class="tarjeta_imagen_img">
+    </div>
+    <div class="tarjeta_datos">
+        <div class="tarjeta_datos_tipo">
+            <p class="tarjeta_titulo_tipo_texto">{{librosPadre.tipo}}</p>
+        </div>
+        <div class="tarjeta_datos_hr">
+            <hr>
+        </div>
+        <div class="tarjeta_datos_titulo">
+            <p class="tarjeta_datos_titulo_texto">{{librosPadre.titulo}}</p>
+        </div>
+        <div class="tarjeta_datos_autorRef">
+            <p class="tarjeta_datos_autorRef_texto">Autor: {{librosPadre.autor}}</p>
+            <p class="tarjeta_datos_autorRef_texto">{{librosPadre.id_libro | ref}}</p>
+        </div>
+        <div class="tarjeta_datos_precio">
+            <p class="tarjeta_datos_precio_texto">{{librosPadre.precio}}€</p>
+        </div>
+        <div class="tarjeta_datos_boton">
+            <button (click)="comprar()" [ngClass]="parPadre?'tarjeta_datos_boton_btn':'tarjeta_datos_boton_btn--par'">COMPRAR</button>
+        </div>
+    </div>
+</div>

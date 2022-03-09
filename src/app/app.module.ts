@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     LibrosComponent, 
     RefLibroPipe,
     LoginComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

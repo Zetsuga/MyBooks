@@ -120,37 +120,8 @@
         <ng-template #falso>
             
             <div class="contenido_tarjeta">
-                <ng-container *ngFor="let element of libros; let  par = even">
-                    <div class="tarjeta">
-                        <div class="tarjeta_imagen">
-                            <button 
-                                type="reset" 
-                                class="tarjeta_imagen_boton" 
-                                (click)="borrarLibro(element.id_libro)">X</button>
-                            <img src="../../../assets/img/{{element.foto}}" alt="{{element.titulo}}" class="tarjeta_imagen_img">
-                        </div>
-                        <div class="tarjeta_datos">
-                            <div class="tarjeta_datos_tipo">
-                                <p class="tarjeta_titulo_tipo_texto">{{element.tipo}}</p>
-                            </div>
-                            <div class="tarjeta_datos_hr">
-                                <hr>
-                            </div>
-                            <div class="tarjeta_datos_titulo">
-                                <p class="tarjeta_datos_titulo_texto">{{element.titulo}}</p>
-                            </div>
-                            <div class="tarjeta_datos_autorRef">
-                                <p class="tarjeta_datos_autorRef_texto">Autor: {{element.autor}}</p>
-                                <p class="tarjeta_datos_autorRef_texto">{{element.id_libro | ref}}</p>
-                            </div>
-                            <div class="tarjeta_datos_precio">
-                                <p class="tarjeta_datos_precio_texto">{{element.precio}}€</p>
-                            </div>
-                            <div class="tarjeta_datos_boton">
-                                <button (click)="comprar()" [ngClass]="par?'tarjeta_datos_boton_btn':'tarjeta_datos_boton_btn--par'">COMPRAR</button>
-                            </div>
-                        </div>
-                    </div>
+                <ng-container *ngFor="let libro of libros; let  par = even">
+                    <app-card [librosPadre] = "libro" [parPadre]="par" (eventoBorrar)="borrarLibro($event)"></app-card>
                 </ng-container>
             </div>
         </ng-template>
